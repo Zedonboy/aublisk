@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "aublisk_icp_backend": {
+      "candid": "src/aublisk_icp_backend/aublisk_icp_backend.did",
+      "package": "aublisk_icp_backend",
+      "type": "rust"
+    },
+    "aublisk_icp_frontend": {
+      "dependencies": [
+        "aublisk_icp_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/aublisk_icp_frontend/src/index.html"
+      },
+      "source": [
+        "src/aublisk_icp_frontend/assets",
+        "dist/aublisk_icp_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
