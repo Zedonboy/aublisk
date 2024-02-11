@@ -1,0 +1,22 @@
+"aublisk_icrc1": {
+    "candid": "external_package/ledger.did",
+    "wasm": "external_package/ic-icrc1-ledger.wasm.gz",
+    "type": "custom"
+  },
+  "aublisk_icrc1_index": {
+    "candid": "external_package/index-ng.did",
+    "wasm": "external_package/ic-icrc1-index-ng.wasm.gz",
+    "type": "custom"
+  },
+
+  "internet_identity": {
+    "type": "custom",
+    "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+    "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+    "remote": {
+      "id": {
+        "ic": "ahw5u-keaaa-aaaaa-qaaha-cai"
+      }
+    },
+    "frontend": {}
+  },

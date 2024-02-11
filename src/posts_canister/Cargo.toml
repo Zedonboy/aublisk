@@ -1,0 +1,17 @@
+[package]
+name = "posts_canister"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ic-cdk = { workspace=true }
+candid ={ workspace = true }
+ic-ledger-types = {workspace = true}
+serde = {workspace = true}
+app_core ={ path = "../app_core"}
+regex = "1.10.3"
+hex = "0.4.3"

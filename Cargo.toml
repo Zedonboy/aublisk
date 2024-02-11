@@ -1,4 +1,11 @@
 [workspace]
-members = [
-    "src/aublisk_icp_backend",
+members = [ "src/app_core",
+    "src/aublisk_icp_backend", "src/marketplace_canister", "src/posts_canister", "src/profile_canister",
 ]
+
+[workspace.dependencies]
+candid = "0.10.2"
+ic-cdk = "0.12.0"
+ic-cdk-macros = "0.8.4"
+serde = "1.0.132"
+ic-ledger-types = "0.9.0"

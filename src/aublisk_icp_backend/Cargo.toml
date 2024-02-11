@@ -1,14 +1,16 @@
 [package]
 name = "aublisk_icp_backend"
 version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib"]
+authors = ["Psychedelic team <support@fleek.co>"]
+edition = "2018"
 
 [dependencies]
-candid = "0.8"
-ic-cdk = "0.7"
-ic-cdk-timers = "0.1" # Feel free to remove this dependency if you don't need timers
+candid = {workspace = true}
+ic-cdk = {workspace = true}
+ic-cdk-macros = {workspace = true}
+serde = {workspace = true}
+num-traits = "0.2.14"
+compile-time-run = "0.2.12"
+# cap-sdk = { git = "https://github.com/Psychedelic/cap.git", branch = "main" }
+app_core = {path = "../app_core"}
+ic-ledger-types = {workspace = true}

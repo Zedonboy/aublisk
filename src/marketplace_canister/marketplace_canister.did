@@ -1,0 +1,83 @@
+type GenericValue = variant {
+  Nat64Content : nat64;
+  Nat32Content : nat32;
+  BoolContent : bool;
+  Nat8Content : nat8;
+  Int64Content : int64;
+  IntContent : int;
+  NatContent : nat;
+  Nat16Content : nat16;
+  Int32Content : int32;
+  Int8Content : int8;
+  FloatContent : float64;
+  Int16Content : int16;
+  BlobContent : vec nat8;
+  NestedContent : Vec;
+  Principal : principal;
+  TextContent : text;
+};
+type MarketError = variant {
+  UnauthorizedOperator;
+  SelfTransfer;
+  TokenNotFound;
+  UnauthorizedOwner;
+  UserNotPremium;
+  SelfApprove;
+  OperatorNotFound;
+  ExistedNFT;
+  TokenInvalid;
+  OwnerNotFound;
+  InvalidOperation;
+  InsufficientFund;
+};
+type Result = variant { Ok; Err : MarketError };
+type SellOrder = record {
+  prev_owner : principal;
+  price : nat;
+  token_metadata : TokenMetadata;
+};
+type TokenMetadata = record {
+  transferred_at : opt nat64;
+  transferred_by : opt principal;
+  owner : opt principal;
+  operator : opt principal;
+  approved_at : opt nat64;
+  approved_by : opt principal;
+  properties : vec record { text; GenericValue };
+  is_burned : bool;
+  token_identifier : text;
+  burned_at : opt nat64;
+  burned_by : opt principal;
+  minted_at : nat64;
+  minted_by : principal;
+};
+type Vec = vec record {
+  text;
+  variant {
+    Nat64Content : nat64;
+    Nat32Content : nat32;
+    BoolContent : bool;
+    Nat8Content : nat8;
+    Int64Content : int64;
+    IntContent : int;
+    NatContent : nat;
+    Nat16Content : nat16;
+    Int32Content : int32;
+    Int8Content : int8;
+    FloatContent : float64;
+    Int16Content : int16;
+    BlobContent : vec nat8;
+    NestedContent : Vec;
+    Principal : principal;
+    TextContent : text;
+  };
+};
+service : {
+  buy : (text) -> (Result);
+  check_nft_in_marketplace_address : (text) -> (bool) query;
+  export_candid : () -> (text) query;
+  get_nft_deposit_address : () -> (text) query;
+  get_nfts_on_sale : () -> (vec SellOrder) query;
+  list_nfts : () -> (vec TokenMetadata) query;
+  sell : (text, nat) -> (Result);
+}

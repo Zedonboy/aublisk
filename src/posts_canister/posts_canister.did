@@ -1,0 +1,28 @@
+type CreatePostSchema = record {
+  content : opt text;
+  post_type : PostType;
+  photos : opt vec text;
+};
+type Post = record {
+  id : text;
+  creator : text;
+  content : text;
+  post_type : PostType;
+  metadata : opt PostMetadata;
+  time : nat64;
+};
+type PostMetadata = record {
+  links : vec text;
+  hash_tags : vec text;
+  mentions : vec text;
+  photos : vec text;
+};
+type PostType = variant { COMMENT; NORMAL_POST; REPOST; REQUOTE };
+type Result = variant { Ok : nat; Err : ServiceError };
+type Result_1 = variant { Ok : Post; Err : ServiceError };
+type ServiceError = variant { PostTooLong; PostNotFound };
+service : {
+  create_post : (CreatePostSchema) -> (Result);
+  export_candid : () -> (text) query;
+  get_post : (text) -> (Result_1) query;
+}

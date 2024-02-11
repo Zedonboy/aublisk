@@ -5,6 +5,7 @@
       "package": "aublisk_icp_backend",
       "type": "rust"
     },
+   
     "aublisk_icp_frontend": {
       "dependencies": [
         "aublisk_icp_backend"
@@ -17,6 +18,35 @@
         "dist/aublisk_icp_frontend/"
       ],
       "type": "assets"
+    },
+
+    "marketplace_canister": {
+      "candid": "src/marketplace_canister/marketplace_canister.did",
+      "package": "marketplace_canister",
+      "type": "rust"
+    },
+    "posts_canister": {
+      "candid": "src/posts_canister/posts_canister.did",
+      "package": "posts_canister",
+      "type": "rust"
+    },
+
+    "profile_canister": {
+      "candid": "src/profile_canister/profile_canister.did",
+      "package": "profile_canister",
+      "type": "rust"
+    },
+
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ahw5u-keaaa-aaaaa-qaaha-cai"
+        }
+      },
+      "frontend": {}
     }
   },
   "defaults": {

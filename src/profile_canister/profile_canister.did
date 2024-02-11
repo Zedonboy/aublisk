@@ -1,0 +1,22 @@
+type Profile = record {
+  bio : text;
+  verified : bool;
+  username : text;
+  display_name : text;
+  photo : opt vec nat8;
+};
+type Result = variant { Ok : nat; Err };
+type Result_1 = variant { Ok : vec Profile; Err };
+type Result_2 = variant { Ok : Profile; Err };
+type UpdateProfile = record { bio : opt text; display_name : opt text };
+service : {
+  export_candid : () -> (text) query;
+  follow_user : (text) -> (Result);
+  get_follower_count : () -> (Result) query;
+  get_followers : () -> (Result_1) query;
+  get_following_count : () -> (Result) query;
+  get_followings : () -> (Result_1) query;
+  get_profile : () -> (Result_2);
+  unfollow_user : (text) -> (Result);
+  update_profile : (UpdateProfile) -> (Result_2);
+}

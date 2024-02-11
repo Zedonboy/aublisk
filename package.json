@@ -14,12 +14,18 @@
     "start": "webpack serve --mode development --env development",
     "deploy:local": "dfx deploy --network=local",
     "deploy:ic": "dfx deploy --network=ic",
-    "generate": "dfx generate aublisk_icp_backend"
+    "generate": "dfx generate aublisk_icp_backend",
+    "prepare:profile": "cargo build --release --target wasm32-unknown-unknown --package profile_canister && candid-extractor target/wasm32-unknown-unknown/release/profile_canister.wasm > src/profile_canister/profile_canister.did",
+    "prepare:posts": "cargo build --release --target wasm32-unknown-unknown --package posts_canister && candid-extractor target/wasm32-unknown-unknown/release/posts_canister.wasm > src/posts_canister/posts_canister.did",
+    "prepare:marketplace": "cargo build --release --target wasm32-unknown-unknown --package marketplace_canister && candid-extractor target/wasm32-unknown-unknown/release/marketplace_canister.wasm > src/marketplace_canister/marketplace_canister.did",
+    "prepare:deploy:local": "cargo build --release --target wasm32-unknown-unknown --package aublisk_icp_backend && npm run prepare:profile && npm run prepare:posts && npm run prepare:marketplace && candid-extractor target/wasm32-unknown-unknown/release/aublisk_icp_backend.wasm > src/aublisk_icp_backend/aublisk_icp_backend.did && dfx deploy",
+    "prepare:deploy:main": "cargo build --release --target wasm32-unknown-unknown --package aublisk_icp_backend && candid-extractor target/wasm32-unknown-unknown/release/aublisk_icp_backend.wasm > src/aublisk_icp_backend/aublisk_icp_backend.did && dfx deploy --ic --identity declan_dev"
   },
   "dependencies": {
     "@dfinity/agent": "^0.20.2",
     "@dfinity/candid": "^0.20.2",
-    "@dfinity/principal": "^0.20.2"
+    "@dfinity/principal": "^0.20.2",
+    "svelte-toasts": "^1.1.2"
   },
   "devDependencies": {
     "assert": "2.0.0",
