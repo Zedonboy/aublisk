@@ -1,61 +1,44 @@
-# aublisk_icp
+# Borderless Digital Pool of Knowledge
+Welcome to the Borderless Digital Pool of Knowledge, a pioneering platform where content creators, authors, and intellectuals converge to share their wisdom, insights, and creative outputs. Our platform redefines the digital content marketplace by leveraging the power of Non-Fungible Tokens (NFTs) to monetize and authenticate articles, books, research papers, and multimedia content. Dive into an ecosystem where knowledge transcends borders, and intellectual property is valued and secured on the blockchain.
 
-Welcome to your new aublisk_icp project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+## Packages and Repo
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+website link: https://www.aublisk.com
 
-To learn more before you start working with aublisk_icp, see the following documentation available online:
+app repo: https://github.com/Zedonboy/aublisk_app
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Rust Canister Development Guide](https://internetcomputer.org/docs/current/developer-docs/backend/rust/)
-- [ic-cdk](https://docs.rs/ic-cdk)
-- [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
-- [Candid Introduction](https://internetcomputer.org/docs/current/developer-docs/backend/candid/)
 
-If you want to start working on your project right away, you might want to try the following commands:
+## Features
+### NFT Marketplace for Digital Content
+Our NFT marketplace lies at the heart of our platform, offering a unique space for creators to mint, sell, and trade their digital content as NFTs. This ensures authenticity, ownership, and the ability to earn from one's intellectual endeavors.
 
-```bash
-cd aublisk_icp/
-dfx help
-dfx canister --help
-```
+### Creator Profiles and Portfolios
+Creators can build their presence through customizable profiles showcasing their works and expertise. This feature not only highlights individual achievements but also facilitates connections with followers and potential buyers.
 
-## Running the project locally
+### Content Discovery and Curation
+Tailored recommendations and curated lists guide users to discover content that resonates with their interests. Our sophisticated algorithms ensure you're always just a click away from finding your next favorite read or investment.
 
-If you want to test your project locally, you can use the following commands:
+### Decentralized Publishing Tools
+Publish directly to the blockchain with our decentralized publishing tools. Designed for ease of use, these tools support various content formats and uphold the principles of immutability and creator attribution.
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
+### Community Engagement and Interactions
+Engage with content through likes, comments, and shares. Join forums and discussion groups to connect with like-minded individuals, fostering a thriving community centered around knowledge sharing and intellectual growth.
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
-```
+### Secure Transactions and Wallet Integration
+Experience seamless and secure transactions with integrated crypto wallet support. Manage your digital assets, track your NFT collections, and engage in transactions with confidence and ease.
 
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
+## Getting Started
+To start exploring the Borderless Digital Pool of Knowledge, follow these steps:
 
-If you have made changes to your backend canister, you can generate a new candid interface with
+**Sign With Internet Identity**: Create an account or log in to access our platform's full range of features.
 
-```bash
-npm run generate
-```
+**Create Content**: Create a content.
 
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
+**Engage with the Community**: Follow your favorite creators, participate in discussions, and contribute to the knowledge pool.
 
-If you are making frontend changes, you can start a development server with
+**Mint and Publish**: If you're a content creator, utilize our publishing tools to share your work with the world.
+Support and Contributions.
 
-```bash
-npm start
-```
+We're constantly striving to improve the Borderless Digital Pool of Knowledge. For support inquiries, suggestions, or contributions, please contact us at [Twitter](https://twitter.com/aublisk).
 
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
-
-### Note on frontend environment variables
-
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
-
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor
+Join us in building a future where knowledge is boundless, and intellectual property is celebrated and secured. Welcome to the frontier of digital content and NFTs. Welcome to the Borderless Digital Pool of Knowledge.
