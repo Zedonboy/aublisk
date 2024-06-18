@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "aublisk_backend": {
+      "candid": "src/aublisk_backend/aublisk_backend.did",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "package": "aublisk_backend",
+      "type": "rust"
+    },
+    "aublisk_frontend": {
+      "dependencies": [
+        "aublisk_backend"
+      ],
+      "source": [
+        "src/aublisk_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "aublisk_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
