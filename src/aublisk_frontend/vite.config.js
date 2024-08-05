@@ -1,15 +1,34 @@
-import { fileURLToPath, URL } from 'url';
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
-import environment from 'vite-plugin-environment';
-import dotenv from 'dotenv';
+import { fileURLToPath, URL } from "url";
+import vue from "@vitejs/plugin-vue"
+import { defineConfig } from "vite";
+import environment from "vite-plugin-environment";
+import dotenv from "dotenv";
+import {viteStaticCopy} from "vite-plugin-static-copy"
 
-dotenv.config({ path: '../../.env' });
-
+dotenv.config({ path: "../../.env" });
+import path from "path"
 export default defineConfig({
+  plugins: [
+    vue(),
+    environment("all", { prefix: "CANISTER_" }),
+    environment("all", { prefix: "DFX_" }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'static/*',
+          dest: 'static'
+        }
+      ]
+    })
+  ],
   build: {
     emptyOutDir: true,
+    rollupOptions: {
+      input: ["index.html", "list.html", "project.html", "404.html"]
+    }
   },
+  assetsDir: '',
+  emptyOutDir: true,
   optimizeDeps: {
     esbuildOptions: {
       define: {
@@ -25,19 +44,12 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    sveltekit(),
-    environment("all", { prefix: "CANISTER_" }),
-    environment("all", { prefix: "DFX_" }),
-  ],
+  
+
   resolve: {
-    alias: [
-      {
-        find: "declarations",
-        replacement: fileURLToPath(
-          new URL("../declarations", import.meta.url)
-        ),
-      },
-    ],
+    alias: {
+      "@": path.resolve(__dirname, "./"),
+      declaration: fileURLToPath(new URL("../declarations", import.meta.url)),
+    },
   },
 });

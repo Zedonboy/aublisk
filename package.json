@@ -12,7 +12,9 @@
     "test": "npm test --workspaces --if-present"
   },
   "type": "module",
+  "private": true,
   "workspaces": [
-    "src/aublisk_frontend"
+    "src/aublisk_frontend",
+    "src/aublisk_dashboard"
   ]
 }

@@ -8,16 +8,30 @@
       "package": "aublisk_backend",
       "type": "rust"
     },
+    
     "aublisk_frontend": {
       "dependencies": [
         "aublisk_backend"
       ],
       "source": [
-        "src/aublisk_frontend/dist"
+        "src/aublisk_frontend/dist",
+        "src/aublisk_frontend/site_config"
       ],
       "type": "assets",
       "workspace": "aublisk_frontend"
+    },
+
+    "aublisk_dashboard": {
+      "dependencies": [
+        "aublisk_backend"
+      ],
+      "source": [
+        "src/aublisk_dashboard/dist"
+      ],
+      "type": "assets",
+      "workspace": "aublisk_dashboard"
     }
+    
   },
   "defaults": {
     "build": {

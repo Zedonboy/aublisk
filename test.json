@@ -1,0 +1,21 @@
+
+    "aublisk_frontend": {
+      "dependencies": [
+        "aublisk_backend"
+      ],
+      "source": [
+        "src/aublisk_frontend/dist",
+        "src/aublisk_frontend/site_config"
+      ],
+      "type": "assets",
+      "workspace": "aublisk_frontend"
+    }
+
+    "aublisk_backend": {
+      "candid": "src/aublisk_backend/aublisk_backend.did",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "package": "aublisk_backend",
+      "type": "rust"
+    }

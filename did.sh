@@ -1,0 +1,1 @@
+cargo build --release --target wasm32-unknown-unknown --package aublisk_backend && candid-extractor target/wasm32-unknown-unknown/release/aublisk_backend.wasm > src/aublisk_backend/aublisk_backend.did

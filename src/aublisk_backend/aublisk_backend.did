@@ -1,3 +1,95 @@
-service : {
-    "greet": (text) -> (text) query;
+type DashboardMetric = record {
+  total_amount_spent : nat64;
+  number_of_project : nat64;
+  total_amount_received : nat64;
+};
+type Member = record {
+  resume : blob;
+  "principal" : principal;
+  photo_url : text;
+  name : text;
+  description : text;
+  skill_sets : vec text;
+  nick_name : text;
+};
+type Milestone = record {
+  member : principal;
+  payment_amount : nat64;
+  task : text;
+  milestone_status : MilestoneStatus;
+};
+type MilestoneStatus = variant { Done; Undone; InProgress };
+type Neuron = record {
+  dissolve_delay : nat64;
+  owner : principal;
+  created_at : nat64;
+  stake : nat64;
+};
+type Project = record {
+  title : text;
+  icrc_token_address : text;
+  hash_id : text;
+  owner : principal;
+  description : text;
+  amount_funded : nat64;
+  timestamp : nat64;
+  skill_sets : vec text;
+  milestones : vec Milestone;
+};
+type ProjectStatus = variant {
+  FUNDED;
+  PUBLISHED;
+  COMPLETED;
+  CREATED;
+  INPROGRESS;
+};
+type Proposal = record {
+  content : text;
+  sender : principal;
+  timestamp : nat64;
+  attachments : vec blob;
+};
+type Result = variant { Ok; Err : text };
+type Result_1 = variant { Ok : text; Err : text };
+type Result_2 = variant { Ok : vec Proposal; Err : text };
+type Result_3 = variant { Ok : vec record { principal; nat64 }; Err : text };
+type Result_4 = variant { Ok : nat; Err : text };
+type UpdatableProject = record {
+  title : opt text;
+  icrc_token_address : opt text;
+  description : opt text;
+  amount_funded : opt nat64;
+  skill_sets : opt vec text;
+  milestones : opt vec Milestone;
+};
+service : () -> {
+  add_milestones : (text, vec Milestone) -> (Result);
+  assign_member_to_milestone : (text, principal, int32) -> (Result);
+  claim_rewards : () -> (nat64);
+  complete_milestone : (text, nat64) -> (Result);
+  create_member : (Member) -> (Result);
+  create_project : (Project, text) -> (Result_1);
+  create_project_proposal : (text, Proposal) -> (Result);
+  get_dashboard_metric : () -> (DashboardMetric) query;
+  get_latest_projects : () -> (vec Project) query;
+  get_member : (principal) -> (opt Member) query;
+  get_neuron : () -> (opt Neuron) query;
+  get_project_address : (text) -> (text) query;
+  get_project_proposals : (text) -> (Result_2) query;
+  get_project_workers : (text) -> (vec principal) query;
+  get_staked_amount : () -> (nat64) query;
+  get_system_skillsets : () -> (vec text) query;
+  get_user_projects : () -> (vec record { Project; ProjectStatus }) query;
+  manual_payout : (text, vec record { principal; nat64 }) -> (Result_3);
+  notify_project_fund : (text) -> (Result) query;
+  price_of_skillset : (text) -> (nat64);
+  publish_project : (text) -> (Result);
+  read_project_and_status : (text) -> (
+      opt record { Project; ProjectStatus },
+    ) query;
+  rent_skillset : (text, nat8) -> (Result);
+  stake : (nat64, nat64) -> (Result);
+  transfer_token : (text, nat64, text) -> (Result_4);
+  unstake : () -> (nat64);
+  update_project : (text, UpdatableProject) -> (Result);
 }
